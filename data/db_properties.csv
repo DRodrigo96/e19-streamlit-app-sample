@@ -1,0 +1,7 @@
+﻿table_name;nro_rows;nro_cols;schema
+clientes_a;2000;4;{'id': 'int', 'name': 'string', 'tc_client': 'decimal', 'cl_code': 'bool'}
+clientes_b;3000;4;{'id': 'int', 'name': 'string', 'tc_client': 'decimal', 'cl_code': 'bool'}
+clientes_c;5000;3;{'id': 'int', 'name': 'string', 'hb_date': 'datetime'}
+clientes_d;1000;3;{'id': 'int', 'name': 'string', 'hb_date': 'datetime'}
+clientes_e;2000;3;{'id': 'int', 'name': 'string', 'hb_date': 'datetime'}
+clientes_f;2000;4;{'id': 'int', 'name': 'string', 'tc_client': 'decimal', 'cl_code': 'bool'}

@@ -1,0 +1,80 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 750px;
+            background-color: #F0F0F0;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "#000000"}, "id": "clientes_c", "label": "clientes_c", "shape": "dot", "title": "\n            - Table name: clientes_c\n            \u003cbr\u003e\n            - Dependencies:\n            \u003cbr\u003e\n            clientes_a\u003cbr\u003eclientes_b\u003cbr\u003eclientes_f\n            \u003cbr\u003e\n            - Propiedades:\n            \u003cbr\u003e\n            Rows: 5000\n            \u003cbr\u003e\n            Columns: 3\n            \u003cbr\u003e\n            Schema: {\u0027id\u0027: \u0027int\u0027, \u0027name\u0027: \u0027string\u0027, \u0027hb_date\u0027: \u0027datetime\u0027}\n            ", "value": 2}, {"font": {"color": "#000000"}, "id": "clientes_e", "label": "clientes_e", "shape": "dot", "title": "\n            - Table name: clientes_e\n            \u003cbr\u003e\n            - Dependencies:\n            \u003cbr\u003e\n            clientes_c\u003cbr\u003eclientes_d\u003cbr\u003eclientes_f\n            \u003cbr\u003e\n            - Propiedades:\n            \u003cbr\u003e\n            Rows: 2000\n            \u003cbr\u003e\n            Columns: 3\n            \u003cbr\u003e\n            Schema: {\u0027id\u0027: \u0027int\u0027, \u0027name\u0027: \u0027string\u0027, \u0027hb_date\u0027: \u0027datetime\u0027}\n            ", "value": 3}, {"font": {"color": "#000000"}, "id": "clientes_d", "label": "clientes_d", "shape": "dot", "title": "\n            - Table name: clientes_d\n            \u003cbr\u003e\n            - Dependencies:\n            \u003cbr\u003e\n            clientes_a\n            \u003cbr\u003e\n            - Propiedades:\n            \u003cbr\u003e\n            Rows: 1000\n            \u003cbr\u003e\n            Columns: 3\n            \u003cbr\u003e\n            Schema: {\u0027id\u0027: \u0027int\u0027, \u0027name\u0027: \u0027string\u0027, \u0027hb_date\u0027: \u0027datetime\u0027}\n            ", "value": 1}, {"font": {"color": "#000000"}, "id": "clientes_f", "label": "clientes_f", "shape": "dot", "title": "\n            - Table name: clientes_f\n            \u003cbr\u003e\n            - Dependencies:\n            \u003cbr\u003e\n            No dependencies found\n            \u003cbr\u003e\n            - Propiedades:\n            \u003cbr\u003e\n            Rows: 2000\n            \u003cbr\u003e\n            Columns: 4\n            \u003cbr\u003e\n            Schema: {\u0027id\u0027: \u0027int\u0027, \u0027name\u0027: \u0027string\u0027, \u0027tc_client\u0027: \u0027decimal\u0027, \u0027cl_code\u0027: \u0027bool\u0027}\n            ", "value": 2}]);
+        edges = new vis.DataSet([{"from": "clientes_c", "to": "clientes_e"}, {"from": "clientes_d", "to": "clientes_e"}, {"from": "clientes_f", "to": "clientes_c"}, {"from": "clientes_f", "to": "clientes_e"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {"layout": {"hierarchical": {"enabled": true, "edgeMinimization": true, "direction": "LR", "sortMethod": "directed"}}, "edges": {"physics": true, "smooth": {"enabled": true, "type": "cubicBezier", "roundness": 0.7}, "arrows": {"to": {"enabled": true, "scaleFactor": 0.4, "type": "arrow"}, "middle": {"enabled": false, "scaleFactor": 0.4}, "from": {"enabled": false, "scaleFactor": 0.4, "type": "arrow"}}}};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
